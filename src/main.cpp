@@ -12,7 +12,8 @@ int main(int argc, char* argv[]) {
 
     // Uncomment the following line to print the edges of the graph
     // g.printEdges();
-
+    
+    std::cout << "Is DAG: " << g.isDag() << std::endl;
     std::cout << "Max Out-Degree: " << g.getMaxOutDegree() << std::endl;
     std::cout << "Max In-Degree: " << g.getMaxInDegree() << std::endl;
 

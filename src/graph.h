@@ -18,6 +18,8 @@ public:
 
     long long getMaxOutDegree() const;
     long long getMaxInDegree() const;
+
+    std::string isDag() const;
 };
 
 #endif // GRAPH_H

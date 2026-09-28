@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <queue>
 
 void Graph::addEdge(long long source, long long target) {
     adjacencyList[source].push_back(target);
@@ -107,4 +108,49 @@ long long Graph::getMaxInDegree() const {
         }
     }
     return maxInDegree;
+}
+
+// Kahn's algorithm to determine if the graph is a DAG
+std::string Graph::isDag() const {
+    std::unordered_map<long long, long long> inDegrees;
+
+    // Initialise in-degree to 0 for every node
+    for (const auto& pair : adjacencyList) {
+        inDegrees[pair.first] = 0;
+    }
+
+    // Sum in-degrees from all edges
+    for (const auto& pair : adjacencyList) {
+        for (long long target : pair.second) {
+            inDegrees[target]++;
+        }
+    }
+
+    // Enqueue all nodes that currently have no incoming edges
+    std::queue<long long> zeroInDegree;
+    for (const auto& pair : inDegrees) {
+        if (pair.second == 0) {
+            zeroInDegree.push(pair.first);
+        }
+    }
+
+    long long visited = 0;
+    while (!zeroInDegree.empty()) {
+        long long node = zeroInDegree.front();
+        zeroInDegree.pop();
+        visited++;
+
+        // Remove the node's outgoing edges and decrement neighbours' in-degrees
+        if (adjacencyList.count(node)) {
+            for (long long target : adjacencyList.at(node)) {
+                inDegrees[target]--;
+                if (inDegrees[target] == 0) {
+                    zeroInDegree.push(target);
+                }
+            }
+        }
+    }
+
+    // All nodes processed means the graph is a DAG; otherwise, it contains cycles
+    return (visited == static_cast<long long>(inDegrees.size())) ? "true" : "false";
 }
