@@ -1,4 +1,5 @@
 #include <iostream>
+#include "graph.h"
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -6,5 +7,10 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     std::string file_name = argv[1];
+    Graph g;
+    g.readFromCsv(file_name);
+
+    // Uncomment the following line to print the edges of the graph
+    // g.printEdges();
     return 0;
 }
