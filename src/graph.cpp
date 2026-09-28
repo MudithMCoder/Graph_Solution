@@ -77,3 +77,34 @@ void Graph::printEdges() const {
 }
     
 */
+
+long long Graph::getMaxOutDegree() const {
+    long long maxOutDegree = 0;
+    for (const auto& pair : adjacencyList) {
+        long long currentOut = static_cast<long long>(pair.second.size());
+        if (currentOut > maxOutDegree) {
+            maxOutDegree = currentOut;
+        }
+    }
+    return maxOutDegree;
+}
+
+long long Graph::getMaxInDegree() const {
+    long long maxInDegree = 0;
+    std::unordered_map<long long, long long> inDegrees;
+    
+    // Initialize in-degrees for all nodes to 0 
+    for (const auto& pair : adjacencyList) {
+        inDegrees[pair.first] = 0;
+    }
+    
+    for (const auto& pair : adjacencyList) {
+        for (long long target : pair.second) {
+            inDegrees[target]++;
+            if (inDegrees[target] > maxInDegree) {
+                maxInDegree = inDegrees[target];
+            }
+        }
+    }
+    return maxInDegree;
+}
