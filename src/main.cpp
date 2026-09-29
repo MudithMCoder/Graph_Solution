@@ -14,8 +14,6 @@ int main(int argc, char* argv[]) {
     Graph g;
     g.readFromCsv(file_name);
 
-    // Uncomment the following line to print the edges of the graph
-    // g.printEdges();
 
     // Determine output file name
     size_t last_slash = file_name.find_last_of("/\\");

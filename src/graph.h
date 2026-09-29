@@ -14,7 +14,6 @@ public:
 
     void readFromCsv(const std::string& filepath);
     void addEdge(long long source, long long target);
-    void printEdges() const;
 
     long long getMaxOutDegree() const;
     long long getMaxInDegree() const;

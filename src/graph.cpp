@@ -41,44 +41,6 @@ void Graph::readFromCsv(const std::string& filepath) {
     }
 }
 
-/*  
- * Print the edges of the graph in the specified format.
- * Only nodes with more than 1 target are printed.
-
-void Graph::printEdges() const {
-    std::cout << "{\n";
-
-    // Collect nodes with more than 1 target
-    std::vector<std::pair<long long, std::vector<long long>>> multiTarget;
-    for (const auto& pair : adjacencyList) {
-        if (pair.second.size() > 1) {
-            multiTarget.push_back(pair);
-        }
-    }
-
-    for (std::size_t i = 0; i < multiTarget.size(); i++) {
-        long long source = multiTarget[i].first;
-        const std::vector<long long>& targets = multiTarget[i].second;
-
-        std::cout << "Node " << source << " -> [ ";
-        for (long long target : targets) {
-            std::cout << target << " ";
-        }
-        std::cout << "]";
-
-        if (i == multiTarget.size() - 1) {
-            std::cout << "}";
-        }
-        std::cout << "\n";
-    }
-
-    if (multiTarget.empty()) {
-        std::cout << "}\n";
-    }
-}
-    
-*/
-
 long long Graph::getMaxOutDegree() const {
     long long maxOutDegree = 0;
     for (const auto& pair : adjacencyList) {
