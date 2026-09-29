@@ -20,6 +20,8 @@ public:
     long long getMaxInDegree() const;
 
     std::string isDag() const;
+
+    const std::unordered_map<long long, std::vector<long long>>& getAdjacencyList() const;
 };
 
 #endif // GRAPH_H

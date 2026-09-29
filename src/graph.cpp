@@ -154,3 +154,7 @@ std::string Graph::isDag() const {
     // All nodes processed means the graph is a DAG; otherwise, it contains cycles
     return (visited == static_cast<long long>(inDegrees.size())) ? "true" : "false";
 }
+
+const std::unordered_map<long long, std::vector<long long>>& Graph::getAdjacencyList() const {
+    return adjacencyList;
+}
