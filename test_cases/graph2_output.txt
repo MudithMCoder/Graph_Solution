@@ -1,0 +1,5 @@
+Is DAG: false
+Max Out-Degree: 1
+Max In-Degree: 1
+Max PageRank: 0.000008
+Min PageRank: 0.000008
